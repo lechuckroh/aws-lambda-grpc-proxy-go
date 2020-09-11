@@ -3,8 +3,8 @@
 EXE=app
 ZIP_FILE=app.zip
 AWS_PROFILE ?= default
-FUNC_NAME ?= my-function
-IAM ?= 123456789012
+FUNC_NAME ?= proxy-lambda
+IAM ?= IAM-is-not-defined
 ROLE_NAME ?= lambda_basic_execution
 ROLE_ARN ?= arn:aws:iam::$(IAM):role/$(ROLE_NAME)
 

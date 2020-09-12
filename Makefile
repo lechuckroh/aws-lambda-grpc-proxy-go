@@ -45,3 +45,6 @@ delete-function:
 	@aws lambda delete-function \
 	--function-name $(FUNC_NAME) \
 	--profile $(AWS_PROFILE)
+
+export-plantuml:
+	@-cat docs/diagram.iuml | plantuml -pipe -tsvg > docs/diagram.svg

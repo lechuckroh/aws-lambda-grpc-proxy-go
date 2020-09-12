@@ -2,13 +2,23 @@
 
 This lambda function proxies gRPC invocation between VPCs.
 
+![diagram](docs/diagram.svg)
+
+1. invoke proxy lambda with base64 encoded gRPC message.
+2. call gRPC method with decoded binary gRPC message.
+3. get gRPC response.
+4. response with base64 encoded gRPC response.
 
 ## Requirements
 * go 1.11+
 * [aws-cli](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/cli-chap-install.html)
-* make (optional)
+* make
+* zip
 
 ## Quick Start
+1. [Define a role](https://console.aws.amazon.com/iam/home#/roles) with `AWSLambdaBasicExecutionRole` policy. 
+2. Replace `ROLE_ARN` variable with your role ARN.
+
 ```bash
 # install dependencies
 $ go get && go mod vendor
@@ -33,6 +43,4 @@ $ make clean
 $ make delete-function
 ```
 
-1. [Define a role](https://console.aws.amazon.com/iam/home#/roles) with `AWSLambdaBasicExecutionRole` policy. 
-2. Replace `ROLE_ARN` variable with your role ARN.
 

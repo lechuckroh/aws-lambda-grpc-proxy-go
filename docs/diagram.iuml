@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #EEEBDC
+
+skinparam node {
+    BackgroundColor Yellow
+}
+
+package "VPC 2" {
+    node "proxy lambda" as proxy_lambda
+    node "gRPC server" as grpc_server
+}
+
+package "VPC 1" {
+    node "application" as vpc2_app
+}
+
+vpc2_app -> proxy_lambda : 1. invoke
+proxy_lambda -> grpc_server : 2. gRPC request
+proxy_lambda <- grpc_server : 3. gRPC response
+proxy_lambda -> vpc2_app: 4. response
+
+@enduml

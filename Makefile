@@ -1,5 +1,3 @@
-.PHONY: vendor build-linux zip create-func
-
 EXE=app
 ZIP_FILE=app.zip
 AWS_PROFILE ?= default
@@ -8,15 +6,18 @@ IAM ?= IAM-is-not-defined
 ROLE_NAME ?= lambda_basic_execution
 ROLE_ARN ?= arn:aws:iam::$(IAM):role/$(ROLE_NAME)
 
+.PHONY: dep
 dep:
 	@go get && go mod vendor
 
 build-linux:
 	@GO111MODULE=on GOOS=linux go build -mod=vendor -o $(EXE)
 
+.PHONY: clean
 clean:
 	@rm -f $(EXE) $(ZIP_FILE)
 
+.PHONY: zip
 zip:
 	@zip $(ZIP_FILE) $(EXE)
 
@@ -29,6 +30,7 @@ create-function: build-linux zip
 	--handler $(EXE) \
 	--role $(ROLE_ARN)
 
+.PHONY: invoke
 invoke:
 	@aws lambda invoke \
 	--profile $(AWS_PROFILE) \

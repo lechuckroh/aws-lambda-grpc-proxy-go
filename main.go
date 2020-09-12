@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"errors"
 	"log"
 	"os"
 
@@ -10,15 +9,16 @@ import (
 	"github.com/aws/aws-lambda-go/lambdacontext"
 )
 
-// MyEvent is incoming event type
-type MyEvent struct {
-	Key1 string `json:"key1"`
-	Key2 string `json:"key2"`
-	Key3 string `json:"key3"`
+// LambdaRequest is incoming event type
+type LambdaRequest struct {
+	Service  string `json:"service"`
+	Method   string `json:"method"`
+	Message  string `json:"message"`
+	Metadata string `json:"metadata"`
 }
 
-// MyResponse is response type
-type MyResponse struct {
+// LambdaResponse is response type
+type LambdaResponse struct {
 	Message string `json:"message"`
 }
 
@@ -27,24 +27,18 @@ func init() {
 }
 
 // HandleRequest is a handler function
-func HandleRequest(ctx context.Context, evt MyEvent) (*MyResponse, error) {
+func HandleRequest(ctx context.Context, req LambdaRequest) (*LambdaResponse, error) {
 	// context
 	lc, _ := lambdacontext.FromContext(ctx)
 	log.Printf("AwsRequestID: %s", lc.AwsRequestID)
 
 	// environment variables
-	for _, e := range os.Environ() {
-		log.Println(e)
-	}
+	serverAddr := os.Getenv("SERVER_ADDR")
 
-	log.Printf("Key1: %s", evt.Key1)
-	log.Printf("Key2: %s", evt.Key2)
-	log.Printf("Key3: %s", evt.Key3)
+	log.Printf("serverAddr: %s", serverAddr)
+	log.Printf("request: %+v", req)
 
-	if evt.Key3 == "" {
-		return nil, errors.New("key3 is empty")
-	}
-	return &MyResponse{Message: evt.Key1}, nil
+	return &LambdaResponse{Message: "not implemented"}, nil
 }
 
 func main() {

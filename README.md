@@ -4,10 +4,10 @@ This lambda function proxies gRPC invocation between VPCs.
 
 ![diagram](docs/diagram.svg)
 
-1. invoke proxy lambda with base64 encoded gRPC message.
-2. call gRPC method with decoded binary gRPC message.
+1. invoke proxy lambda with base64 encoded protobuf message.
+2. call gRPC method with raw protobuf message.
 3. get gRPC response.
-4. response with base64 encoded gRPC response.
+4. response with base64 encoded protobuf message.
 
 ## Requirements
 * go 1.11+

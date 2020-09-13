@@ -1,5 +1,6 @@
 .DS_Store
 .idea
+.run
 vendor
 /app
 /out

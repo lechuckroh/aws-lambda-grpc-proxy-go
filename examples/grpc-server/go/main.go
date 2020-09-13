@@ -17,9 +17,12 @@ type HelloServer struct {
 }
 
 func (s *HelloServer) Call(ctx context.Context, req *hello.CallRequest) (*hello.CallResponse, error) {
-	return &hello.CallResponse{
+	resp := hello.CallResponse{
 		Msg: fmt.Sprintf("hello %s", req.Name),
-	}, nil
+	}
+	log.Printf("request: %+v", req)
+	log.Printf("response: %+v", resp)
+	return &resp, nil
 }
 
 func main() {

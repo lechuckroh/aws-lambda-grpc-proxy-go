@@ -1,10 +1,11 @@
 EXE=app
 ZIP_FILE=app.zip
 AWS_PROFILE ?= default
-FUNC_NAME ?= proxy-lambda
+FUNC_NAME ?= grpc-proxy-go
 IAM ?= IAM-is-not-defined
 ROLE_NAME ?= lambda_basic_execution
 ROLE_ARN ?= arn:aws:iam::$(IAM):role/$(ROLE_NAME)
+GRPC_SERVER_ADDR ?= example.com:9090
 
 .PHONY: dep
 dep:
@@ -28,14 +29,15 @@ create-function: build-linux zip
 	--runtime go1.x \
 	--zip-file fileb://$(ZIP_FILE) \
 	--handler $(EXE) \
-	--role $(ROLE_ARN)
+	--role $(ROLE_ARN) \
+	--environment Variables={SERVER_ADDR=$(GRPC_SERVER_ADDR)}
 
 .PHONY: invoke
 invoke:
 	@aws lambda invoke \
 	--profile $(AWS_PROFILE) \
 	--function-name $(FUNC_NAME) \
-	--payload '{"key1":"v1", "key2":"v2", "key3":"v3"}' \
+	--payload '{"service":"lechuckroh.service.hello", "method":"Call", "key3":"v3"}' \
 	out \
 	--log-type Tail \
 	--query 'LogResult' \

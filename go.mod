@@ -4,6 +4,6 @@ go 1.14
 
 require (
 	github.com/aws/aws-lambda-go v1.19.0
-	github.com/golang/protobuf v1.3.3
+	github.com/golang/protobuf v1.3.3 // indirect
 	google.golang.org/grpc v1.32.0
 )

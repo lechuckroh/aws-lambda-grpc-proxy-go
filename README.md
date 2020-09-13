@@ -43,4 +43,55 @@ $ make clean
 $ make delete-function
 ```
 
+## Usage
 
+### Golang
+```go
+type LambdaRequest struct {
+	Service string `json:"service"`
+	Method  string `json:"method"`
+	Data    string `json:"data"`
+}
+
+func NewLambdaRequest(service, method string, m proto.Message) *LambdaRequest {
+	bytes, _ := proto.Marshal(m)
+	return &LambdaRequest{
+		Service: service,
+		Method: method,
+		Data: base64.StdEncoding.EncodeToString(bytes),
+	}
+}
+
+type LambdaResponse struct {
+	StatusCode int16  `json:"statusCode"`
+	Data       string `json:"data"`
+}
+
+func callLambda() {
+    // create lambda client
+    sess := session.Must(session.NewSessionWithOptions(session.Options{
+        SharedConfigState: session.SharedConfigEnable,
+    }))
+    client := lambda.New(sess, &aws.Config{Region: aws.String("ap-northeast-2")})
+
+    // marshal request
+    payload, _ := json.Marshal(NewLambdaRequest(
+        "lechuckroh.service.hello.Hello",
+        "Call",
+        &hello.CallRequest{Name: "world"},
+    })
+
+    // invoke lambda
+    result, _ := client.Invoke(&lambda.InvokeInput{
+        FunctionName: aws.String("grpc-proxy-go"),
+        Payload:      payload,
+    })
+
+    // unmarshal response
+    var resp LambdaResponse
+    json.Unmarshal(result.Payload, &resp)
+    respBytes, _ := base64.StdEncoding.DecodeString(resp.Data)
+    var callResponse hello.CallResponse
+    deserializeMessage(respBytes, &callResponse)
+}
+```

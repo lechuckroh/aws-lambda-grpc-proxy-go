@@ -48,23 +48,23 @@ $ make delete-function
 ### Golang
 ```go
 type LambdaRequest struct {
-	Service string `json:"service"`
-	Method  string `json:"method"`
-	Data    string `json:"data"`
+    Service string `json:"service"`
+    Method  string `json:"method"`
+    Data    string `json:"data"`
 }
 
 func NewLambdaRequest(service, method string, m proto.Message) *LambdaRequest {
-	bytes, _ := proto.Marshal(m)
-	return &LambdaRequest{
-		Service: service,
-		Method: method,
-		Data: base64.StdEncoding.EncodeToString(bytes),
-	}
+    bytes, _ := proto.Marshal(m)
+    return &LambdaRequest{
+        Service: service,
+        Method: method,
+        Data: base64.StdEncoding.EncodeToString(bytes),
+    }
 }
 
 type LambdaResponse struct {
-	StatusCode int16  `json:"statusCode"`
-	Data       string `json:"data"`
+    StatusCode int16  `json:"statusCode"`
+    Data       string `json:"data"`
 }
 
 func callLambda() {

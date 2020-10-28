@@ -5,3 +5,6 @@ vendor
 /app
 /out
 *.zip
+*.tfstate
+*.tfstate.backup
+.terraform

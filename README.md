@@ -95,3 +95,20 @@ func callLambda() {
     deserializeMessage(respBytes, &callResponse)
 }
 ```
+
+## Deploy
+
+```bash
+# build package
+$ make build-linux zip
+
+# init terraform
+$ cd terraform
+$ terraform init
+
+# plan
+$ terraform plan
+
+# apply
+$ terraform apply -var grpc_server_addr=example.com:9090
+```

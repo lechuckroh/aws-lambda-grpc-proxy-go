@@ -16,8 +16,6 @@ This lambda function proxies gRPC invocation between VPCs.
 * zip
 
 ## Quick Start
-1. [Define a role](https://console.aws.amazon.com/iam/home#/roles) with `AWSLambdaBasicExecutionRole` policy. 
-2. Replace `ROLE_ARN` variable with your role ARN.
 
 ```bash
 # install dependencies
@@ -28,7 +26,13 @@ $ make build-linux
 
 # create a deployment package by packaging the executable in a ZIP file. 
 $ make zip
+```
 
+### AWS CLI
+1. [Define a role](https://console.aws.amazon.com/iam/home#/roles) with `AWSLambdaBasicExecutionRole` policy. 
+2. Replace `ROLE_ARN` variable with your role ARN.
+
+```bash
 # use AWS CLI to create a function
 $ ROLE_ARN={your role ARN} \
   make create-function
@@ -42,6 +46,24 @@ $ make clean
 # delete lambda function
 $ make delete-function
 ```
+
+### terraform
+
+```bash
+# init terraform
+$ cd terraform
+$ terraform init
+
+# plan
+$ terraform plan
+
+# apply
+$ terraform apply -var grpc_server_addr=example.com:9090
+
+# destroy
+$ terraform destroy
+```
+
 
 ## Usage
 
@@ -94,21 +116,4 @@ func callLambda() {
     var callResponse hello.CallResponse
     deserializeMessage(respBytes, &callResponse)
 }
-```
-
-## Deploy
-
-```bash
-# build package
-$ make build-linux zip
-
-# init terraform
-$ cd terraform
-$ terraform init
-
-# plan
-$ terraform plan
-
-# apply
-$ terraform apply -var grpc_server_addr=example.com:9090
 ```

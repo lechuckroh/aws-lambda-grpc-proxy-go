@@ -50,8 +50,9 @@ $ make delete-function
 ### terraform
 
 ```bash
+$ cd IaC/terraform
+
 # init terraform
-$ cd terraform
 $ terraform init
 
 # plan
@@ -62,6 +63,21 @@ $ terraform apply -var grpc_server_addr=example.com:9090
 
 # destroy
 $ terraform destroy
+```
+
+### CDK for terraform
+
+```bash
+$ cd IaC/cdktf
+
+# plan
+$ npm run diff
+
+# deploy
+$ npm run deploy
+
+# destroy
+$ npm run destroy
 ```
 
 

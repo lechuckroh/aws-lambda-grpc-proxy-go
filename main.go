@@ -4,12 +4,11 @@ import (
 	"context"
 	"encoding/base64"
 	"fmt"
+	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/aws/aws-lambda-go/lambdacontext"
 	"google.golang.org/grpc"
 	"log"
 	"os"
-
-	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/aws/aws-lambda-go/lambdacontext"
 )
 
 // LambdaRequest is incoming event type
@@ -39,6 +38,14 @@ func decodeBase64(s string) ([]byte, error) {
 	return base64.StdEncoding.DecodeString(s)
 }
 
+func getServerAddr() string {
+	serverAddr := os.Getenv("SERVER_ADDR")
+	if serverAddr == "" {
+		serverAddr = os.Getenv("server_addr")
+	}
+	return serverAddr
+}
+
 // HandleRequest is a handler function
 func HandleRequest(ctx context.Context, req LambdaRequest) (*LambdaResponse, error) {
 	// context
@@ -46,7 +53,7 @@ func HandleRequest(ctx context.Context, req LambdaRequest) (*LambdaResponse, err
 	log.Printf("AwsRequestID: %s", lc.AwsRequestID)
 
 	// environment variables
-	serverAddr := os.Getenv("SERVER_ADDR")
+	serverAddr := getServerAddr()
 
 	log.Printf("serverAddr: %s", serverAddr)
 	log.Printf("request: %+v", req)

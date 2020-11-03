@@ -78,7 +78,7 @@ class LambdaGrpcProxyStack extends TerraformStack {
             }
         });
 
-        const loggingPolicy = new IamPolicy(this, 'loggingPolocy', {
+        const loggingPolicy = new IamPolicy(this, 'loggingPolicy', {
             name: 'lambda_logging',
             path: '/',
             description: 'IAM policy for logging from a lambda',

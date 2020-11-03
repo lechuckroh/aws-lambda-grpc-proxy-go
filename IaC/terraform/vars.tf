@@ -18,5 +18,5 @@ variable "memory" {
 
 variable "filename" {
   description = "the path to the function's deployment package"
-  default = "../app.zip"
+  default = "../../app.zip"
 }

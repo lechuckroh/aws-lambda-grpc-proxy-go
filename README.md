@@ -80,6 +80,24 @@ $ npm run deploy
 $ npm run destroy
 ```
 
+### CDK
+
+```bash
+$ cd IaC/cdk
+
+# bootstrap
+$ npm run bootstrap
+
+# plan
+$ npm run diff
+
+# deploy
+$ npm run deploy
+
+# destroy
+$ npm run destroy
+```
+
 
 ## Usage
 

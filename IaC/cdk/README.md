@@ -1,15 +1,21 @@
-# Welcome to your CDK TypeScript project!
+# CDK
 
-You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`CdkStack`)
-which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
+## Commands
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+Run [bootstrapping](https://docs.aws.amazon.com/cdk/latest/guide/bootstrapping.html) first:
+```bash
+$ npm run bootstrap
+```
 
-## Useful commands
+After bootstrapping:
 
- * `npm run build`   compile typescript to js
- * `npm run watch`   watch for changes and compile
- * `npm run test`    perform the jest unit tests
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk synth`       emits the synthesized CloudFormation template
+```bash
+# compare deployed stack with current state
+$ npm run diff
+
+# deploy this stack to your default AWS account/region
+$ npm run deploy
+
+# destroy deployed stack
+$ npm run destroy
+```

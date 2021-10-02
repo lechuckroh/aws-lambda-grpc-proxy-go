@@ -11,8 +11,10 @@ GRPC_SERVER_ADDR ?= example.com:9090
 dep:
 	@go get && go mod vendor
 
-build-linux:
-	@GO111MODULE=on GOOS=linux go build -mod=vendor -o $(EXE)
+build-linux-amd64:
+	@GO111MODULE=on GOOS=linux GOARCH=amd64 go build -mod=vendor -o $(EXE)
+build-linux-arm64:
+	@GO111MODULE=on GOOS=linux GOARCH=arm64 go build -mod=vendor -o $(EXE)
 
 .PHONY: clean
 clean:
@@ -22,7 +24,7 @@ clean:
 zip:
 	@zip $(ZIP_FILE) $(EXE)
 
-create-function: build-linux zip
+create-function: build-linux-amd64 zip
 	@aws lambda create-function \
 	--profile $(AWS_PROFILE) \
 	--function-name $(FUNC_NAME) \

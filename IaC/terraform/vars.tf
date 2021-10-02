@@ -1,3 +1,7 @@
+variable "architecture" {
+  default = "x86_64"
+}
+
 variable "lambda_function_name" {
   default = "grpc-proxy-go"
 }

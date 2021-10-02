@@ -22,7 +22,7 @@ This lambda function proxies gRPC invocation between VPCs.
 $ go get && go mod vendor
 
 # compile linux binary
-$ make build-linux
+$ make build-linux-amd64
 
 # create a deployment package by packaging the executable in a ZIP file. 
 $ make zip

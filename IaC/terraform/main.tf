@@ -32,6 +32,7 @@ resource "aws_lambda_function" "proxy_lambda" {
   runtime       = "go1.x"
   memory_size   = var.memory
   filename      = var.filename
+  architectures = [var.architecture]
 
   environment {
     variables = {

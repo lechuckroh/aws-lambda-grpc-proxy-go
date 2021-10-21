@@ -20,7 +20,13 @@ variable "memory" {
   default = 128
 }
 
-variable "filename" {
+variable "executable" {
+  description = "the path to the function's binary"
+  default = "../../app"
+}
+
+variable "zip_filename" {
   description = "the path to the function's deployment package"
   default = "../../app.zip"
 }
+

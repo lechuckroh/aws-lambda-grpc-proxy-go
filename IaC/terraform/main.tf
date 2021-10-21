@@ -7,13 +7,15 @@ resource "aws_iam_role" "lambda_exec" {
   description        = "Allows Lambda functions to call AWS services on your behalf"
   assume_role_policy = jsonencode({
     Version   = "2012-10-17",
-    Statement = [{
-      Effect    = "Allow",
-      Principal = {
-        Service = "lambda.amazonaws.com"
-      },
-      Action    = "sts:AssumeRole"
-    }]
+    Statement = [
+      {
+        Effect    = "Allow",
+        Principal = {
+          Service = "lambda.amazonaws.com"
+        },
+        Action    = "sts:AssumeRole"
+      }
+    ]
   })
 
   tags = {
@@ -26,12 +28,13 @@ resource "aws_iam_role" "lambda_exec" {
 ##################
 
 resource "aws_lambda_function" "proxy_lambda" {
-  role          = aws_iam_role.lambda_exec.arn
-  function_name = var.lambda_function_name
-  handler       = var.handler
-  runtime       = "go1.x"
-  memory_size   = var.memory
-  filename      = var.filename
+  role             = aws_iam_role.lambda_exec.arn
+  function_name    = var.lambda_function_name
+  handler          = var.handler
+  runtime          = "go1.x"
+  memory_size      = var.memory
+  filename         = data.archive_file.lambda_zip.output_path
+  source_code_hash = data.archive_file.lambda_zip.output_base64sha256
   architectures = [var.architecture]
 
   environment {
@@ -50,6 +53,12 @@ resource "aws_lambda_function" "proxy_lambda" {
   tags = {
     Terraform = true
   }
+}
+
+data "archive_file" "lambda_zip" {
+  type        = "zip"
+  source_file = var.executable
+  output_path = var.zip_filename
 }
 
 #######################
@@ -72,15 +81,17 @@ resource "aws_iam_policy" "lambda_logging" {
 
   policy = jsonencode({
     Version   = "2012-10-17",
-    Statement = [{
-      Action   = [
-        "logs:CreateLogGroup",
-        "logs:CreateLogStream",
-        "logs:PutLogEvents"
-      ],
-      Resource = "arn:aws:logs:*:*:*",
-      Effect   = "Allow"
-    }]
+    Statement = [
+      {
+        Action   = [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ],
+        Resource = "arn:aws:logs:*:*:*",
+        Effect   = "Allow"
+      }
+    ]
   })
 }
 

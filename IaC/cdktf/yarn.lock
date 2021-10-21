@@ -415,7 +415,7 @@
     "@types/node" "*"
     form-data "^3.0.0"
 
-"@types/node@*", "@types/node@^16.10.2":
+"@types/node@*", "@types/node@16.10.2":
   version "16.10.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.10.2.tgz#5764ca9aa94470adb4e1185fe2e9f19458992b2e"
   integrity sha512-zCclL4/rx+W5SQTzFs9wyvvyCwoK9QtBpratqz2IYJ3O8Umrn0m3nsTv0wQBk9sRGpvUe9CwPDrQFB10f1FIjQ==
@@ -842,7 +842,7 @@ case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdktf-cli@^0.6.3:
+cdktf-cli@0.6.3:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/cdktf-cli/-/cdktf-cli-0.6.3.tgz#9ec73101b6144f105b5a569a2b40f1110bac95e5"
   integrity sha512-bWY44GnPyUQGixmM6daB1xB2MqOunwQ0W/6K3NUCV6rZnl/mljWXfoIECEmbBonYxu02ojZQ60s7i7zryBBJ7g==
@@ -896,7 +896,7 @@ cdktf-cli@^0.6.3:
     yargs "^17.0"
     zod "^1.11.7"
 
-cdktf@0.6.3, cdktf@^0.6.3:
+cdktf@0.6.3:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/cdktf/-/cdktf-0.6.3.tgz#c30c85b920b67204ec5a9345d73668815aeff786"
   integrity sha512-N0JxulsgED3uQQFjlKgl1sLzDtjX0sdDMpj9Zd8ejsH/JRhLDKOCqRWKukOFfW0X43TtU9r8SiLn3MagLmVG5w==
@@ -1094,15 +1094,15 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
 
+constructs@3.2.10:
+  version "3.2.10"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.2.10.tgz#77770fcc8c910d4c020aff164cf01b2e07324971"
+  integrity sha512-e4wYpn1zbPyY06c0/+G43qXtLlArgpuOeaq0uNy/u945ApUO0W+O+RS+UMcQe6YsA4RG375RxYZgS1d6mVglWg==
+
 constructs@^10.0.0:
   version "10.0.5"
   resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.0.5.tgz#48c0402f1b98bbf5664efff74a8015e6e8a9f41e"
   integrity sha512-IwOwekzrASFC3qt4ozCtV09rteAIAesuCGsW0p+uBfqHd2XcvA5CXqJjgf4eUqm6g8e/noXlVCMDWwC8GaLtrg==
-
-constructs@^3.2.10:
-  version "3.3.156"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.3.156.tgz#9fc0a2e9806d3f4d3be18af03cd3c2cab3db97e8"
-  integrity sha512-rlgYsGqXLi3tMSVz251MvzFjXXBCrGPy/8pIfjeh2fuBjPsvIx9I6AMNHnlhEVaEt7YRPHHuYKoVs1488ifAWA==
 
 content-disposition@0.5.3:
   version "0.5.3"
@@ -3283,10 +3283,10 @@ type-is@~1.6.17, type-is@~1.6.18:
     media-typer "0.3.0"
     mime-types "~2.1.24"
 
-typescript@^4.0.5:
-  version "4.4.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.3.tgz#bdc5407caa2b109efd4f82fe130656f977a29324"
-  integrity sha512-4xfscpisVgqqDfPaJo5vkd+Qd/ItkoagnHpufr+i2QCHBsNYp+G7UAoyFl8aPtx879u38wPV65rZ8qbGZijalA==
+typescript@4.0.5:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.0.5.tgz#ae9dddfd1069f1cb5beb3ef3b2170dd7c1332389"
+  integrity sha512-ywmr/VrTVCmNTJ6iV2LwIrfG1P+lv6luD8sUJs+2eI9NLGigaN+nUQc13iHqisq7bra9lnmUSYqbJvegraBOPQ==
 
 typescript@~3.9.10:
   version "3.9.10"

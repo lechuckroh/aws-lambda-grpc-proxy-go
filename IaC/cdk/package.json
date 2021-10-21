@@ -11,15 +11,15 @@
     "destroy": "cdk destroy"
   },
   "devDependencies": {
-    "@types/node": "16.10.2",
-    "aws-cdk": "1.125.0",
-    "ts-node": "^10.2.1",
-    "typescript": "~4.4.3"
+    "@types/node": "16.11.2",
+    "aws-cdk": "1.128.0",
+    "ts-node": "10.3.0",
+    "typescript": "4.4.4"
   },
   "dependencies": {
-    "@aws-cdk/aws-iam": "1.125.0",
-    "@aws-cdk/aws-lambda": "1.125.0",
-    "@aws-cdk/aws-logs": "1.125.0",
-    "@aws-cdk/core": "1.125.0"
+    "@aws-cdk/aws-iam": "1.128.0",
+    "@aws-cdk/aws-lambda": "1.128.0",
+    "@aws-cdk/aws-logs": "1.128.0",
+    "@aws-cdk/core": "1.128.0"
   }
 }

@@ -71,13 +71,13 @@ $ terraform destroy
 $ cd IaC/cdktf
 
 # plan
-$ npm run diff
+$ yarn diff
 
 # deploy
-$ npm run deploy
+$ yarn deploy
 
 # destroy
-$ npm run destroy
+$ yarn destroy
 ```
 
 ### CDK
@@ -86,16 +86,16 @@ $ npm run destroy
 $ cd IaC/cdk
 
 # bootstrap
-$ npm run bootstrap
+$ yarn bootstrap
 
 # plan
-$ npm run diff
+$ yarn diff
 
 # deploy
-$ npm run deploy
+$ yarn deploy
 
 # destroy
-$ npm run destroy
+$ yarn destroy
 ```
 
 
